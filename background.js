@@ -36,3 +36,34 @@ chrome.runtime.onMessage.addListener((msg,sender,response) =>{
   return true;
 
 });
+
+////// NEW STUFF BELOW
+
+// returns the sheet music of the current song playing
+chrome.runtime.onMessage.addEventListener("DOMContentLoaded", function() {
+  var searchButton = document.getElementById("search-button");
+  searchButton.addEventListener("click", function() {
+    var songName = document.getElementById("song-name").value;
+    var apiUrl = "https://api.musescore.com/services/rest/score.json?q=" + encodeURIComponent(songName);
+    
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        var resultsContainer = document.getElementById("results-container");
+        resultsContainer.innerHTML = "";
+        
+        if (data.resultCount == 0) {
+          resultsContainer.innerHTML = "No results found.";
+        } else {
+          data.results.forEach(function(result) {
+            var resultElement = document.createElement("div");
+            resultElement.innerHTML = "<a href='" + result.url + "'>" + result.title + "</a>";
+            resultsContainer.appendChild(resultElement);
+          });
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  });
+});
