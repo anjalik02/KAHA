@@ -1,0 +1,11 @@
+{
+    "name": "KAHA Music",
+    "version": "1.0.0",
+    "description": "Turn audio into braille",
+    "manifest_version": 3,
+    "author": "KAHA",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "KAHA Music"
+    }
+}
