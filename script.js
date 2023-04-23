@@ -6,6 +6,16 @@ if (window.location.hostname !== "genius.com") {
 
 // Holds the English to Braille Dictionary
 const braille_alpha = {
+    "0": "⠚",
+    "1": "⠁",
+    "2": "⠃",
+    "3": "⠉",
+    "4": "⠙",
+    "5": "⠑",
+    "6": "⠋",
+    "7": "⠛",
+    "8": "⠓",
+    "9": "⠊",
     "a": "⠁",
     "b": "⠃",
     "c": "⠉",
@@ -32,7 +42,7 @@ const braille_alpha = {
     "x": "⠭",
     "y": "⠽",
     "z": "⠵",
-    " ": "⠀",
+    " ": " "
   };
   
 function brailleConvert(text) {
@@ -55,9 +65,13 @@ fetch(currentUrl)
     // Paste song lyrics
     const doc = new DOMParser().parseFromString(html, "text/html");
     const lyricsElem = doc.querySelector(`div.${lyricsClass}`);
-    const lyricsText = lyricsElem.innerText.trim();
+    const lyricsLinks = lyricsElem.querySelectorAll('a');
+    lyricsLinks.forEach(link => link.parentNode.removeChild(link));
+    const lyricsText = lyricsElem.innerHTML.trim();
+    const lyricsLines = lyricsText.split('<br>');
+    const lyricsWithDivs = lyricsLines.map(line => `<div>${line}</div>`).join('');
     const lyricsContainer = document.getElementById("lyrics-container");
-    lyricsContainer.innerText = lyricsText;
+    lyricsContainer.innerHTML = lyricsWithDivs;
 
     // Paste lyrics in braille
     const braille_conversion = brailleConvert(lyricsText);
