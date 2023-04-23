@@ -11,15 +11,10 @@
     "https://api.spotify.com/"
 ],
 "permissions": [
-    "identity"
+    "identity",
+    "tabs"
   ],
-"oauth2": {
-    "client_id": "a7fd001f11fb4272a841c34617339cf4",
-    "scopes": [
-    "https://www.googleapis.com/auth/plus.me",
-    "user-read-currently-playing"
-    ],
-    "response_type": "token"
+"background": {
+    "service_worker": "background.js"
 }
 }
-  
