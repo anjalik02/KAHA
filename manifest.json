@@ -1,23 +1,25 @@
 {
-    "manifest_version": 3,
-    "name": "KAHA Music",
-    "version": "1.0",
-    "description": "Converts currently playing song on Spotify to Braille sheet music.",
-    "action": {
-      "default_popup": "index.html",
-      "default_title": "KAHA Music"
-    },
-    "permissions": [
-      "https://api.spotify.com/",
-      "identity"
+"manifest_version": 3,
+"name": "KAHA Music",
+"version": "1.0",
+"description": "Converts currently playing song on Spotify to Braille sheet music.",
+"action": {
+    "default_popup": "index.html",
+    "default_title": "KAHA Music"
+},
+"host_permissions": [
+    "https://api.spotify.com/"
+],
+"permissions": [
+    "identity"
+  ],
+"oauth2": {
+    "client_id": "a7fd001f11fb4272a841c34617339cf4",
+    "scopes": [
+    "https://www.googleapis.com/auth/plus.me",
+    "user-read-currently-playing"
     ],
-    "oauth2": {
-      "client_id": "a7fd001f11fb4272a841c34617339cf4",
-      "scopes": [
-        "https://www.googleapis.com/auth/plus.me",
-        "user-read-currently-playing"
-      ],
-      "response_type": "token"
-    }
-  }
+    "response_type": "token"
+}
+}
   
