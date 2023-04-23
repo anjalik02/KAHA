@@ -7,13 +7,17 @@ body {
 }
 
 #lyrics-container {
-  width: 250px;
+  width: 350px;
   margin: 0 auto;
   background-color: "#FDFD96";
   padding: 20px;
   border: 2px solid black;
 }
 
-#lyrics-container p {
-  color: black;
+#braille-container {
+  width: 350px;
+  margin: 0 auto;
+  background-color: "#FDFD96";
+  padding: 20px;
+  border: 2px solid black;
 }
