@@ -1,15 +1,15 @@
 h1 {
-  font-size: 10;
+  font-size: 10px;
 }
 
 body {
-  background-color: "#FDFD96";
+  background-color: #FDFD96;
 }
 
 #lyrics-container {
   width: 650px;
   margin: 0 auto;
-  background-color: "#FDFD96";
+  background-color: #FDFD96;
   padding: 20px;
   border: 2px solid black;
   white-space: pre-line;
@@ -18,7 +18,7 @@ body {
 #braille-container {
   width: 650px;
   margin: 0 auto;
-  background-color: "#FDFD96";
+  background-color: #FDFD96;
   padding: 20px;
   border: 2px solid black;
 }

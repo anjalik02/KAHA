@@ -91,4 +91,24 @@ if (window.location.hostname !== "genius.com") {
     const braille_conversion = brailleConvert(lyricsContainer.innerText);
     const brailleContainer = document.getElementById("braille-container");
     brailleContainer.innerHTML = brailleConvert(braille_conversion);
-  }
+}
+
+// Download text of braille
+const downloadButton = document.getElementById("download");
+downloadButton.addEventListener("click", function() {
+  // Get the text content of the braille container
+  const brailleContainer = document.getElementById("braille-container");
+  const brailleText = brailleContainer.innerText;
+  
+  // Create a blob with the text content
+  const blob = new Blob([brailleText], {type: "text/plain"});
+  
+  // Create a temporary link to download the blob as a file
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "braille-text.txt";
+  
+  // Click the link to initiate the download
+  link.click();
+});
