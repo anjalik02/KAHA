@@ -63,41 +63,7 @@ function brailleConvert(text) {
         }
     }
     return brailleText;
-}
-
-function generatePdf() {
-  const lyricsText = document.getElementById("lyrics-container").innerText;
-  const brailleText = document.getElementById("braille-container").innerText;
-  
-  // Define the document size and margins
-  const doc = new jsPDF("p", "pt", "letter");
-  const margin = 40;
-  const title = "Lyrics to Braille Conversion";
-  
-  // Add title to the document
-  doc.setFontSize(20);
-  doc.text(title, margin, margin);
-  
-  // Add lyrics and braille text to the document
-  doc.setFontSize(12);
-  doc.text("Original Lyrics:", margin, margin + 40);
-  doc.text(lyricsText, margin, margin + 60);
-  
-  doc.text("Braille Conversion:", margin, margin + 200);
-  doc.text(brailleText, margin, margin + 220);
-  
-  return doc;
-  }
-
-  function downloadPdf() {
-      const doc = generatePdf();
-      const pdfUrl = doc.output('datauristring');
-      const downloadLink = document.createElement('a');
-      downloadLink.setAttribute('href', pdfUrl);
-      downloadLink.setAttribute('download', 'conversion.pdf');
-      downloadLink.click();
-  }
-  
+} 
 
 chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
   var currentUrl = tabs[0].url;
@@ -122,13 +88,6 @@ fetch(currentUrl)
     console.log(braille_conversion);
     const brailleContainer = document.getElementById("braille-container");
     brailleContainer.innerHTML = braille_conversion;
-
-
-    // Add a download button to the page
-    const downloadButton = document.createElement("button");
-    downloadButton.innerText = "Download PDF";
-    downloadButton.addEventListener("click", downloadPdf);
-    document.body.appendChild(downloadButton);
   })
   .catch(error => console.error(error));
 });
