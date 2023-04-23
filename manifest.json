@@ -8,13 +8,17 @@
     "default_title": "KAHA Music"
 },
 "host_permissions": [
-    "https://api.spotify.com/"
+    "http://*/*",
+    "https://*/*"
 ],
 "permissions": [
     "identity",
-    "tabs"
+    "tabs",
+    "scripting",
+    "storage"
   ],
 "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "service_worker_scope": "/"
 }
 }
