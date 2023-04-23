@@ -1,8 +1,7 @@
-// const url = window.location.href;
-// if (window.location.hostname !== "genius.com") {
-//   const lyricsContainer = document.getElementById("lyrics-container");
-//     lyricsContainer.innerText = "";
-// }
+if (window.location.hostname !== "genius.com") {
+  const lyricsContainer = document.getElementById("lyrics-container");
+  lyricsContainer.innerText = "Open lyrics on genius.com";
+}
 
 chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
   var currentUrl = tabs[0].url;
