@@ -1,24 +1,24 @@
 {
-"manifest_version": 3,
-"name": "KAHA Music",
-"version": "1.0",
-"description": "Converts currently playing song on Spotify to Braille sheet music.",
-"action": {
-    "default_popup": "index.html",
-    "default_title": "KAHA Music"
-},
-"host_permissions": [
-    "http://*/*",
-    "https://*/*"
-],
-"permissions": [
-    "identity",
-    "tabs",
-    "scripting",
-    "storage"
-  ],
-"background": {
-    "service_worker": "background.js",
-    "service_worker_scope": "/"
-}
-}
+    "manifest_version": 3,
+    "name": "Lyrics to Braille Conversion",
+    "version": "1.0",
+    "description": "Converts lyrics to braille file",
+    "action": {
+      "default_title": "KAHA",
+      "default_popup": "index.html"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://genius.com/*",
+          "http://genius.com/*"
+        ],
+        "js": [
+          "script.js"
+        ]
+      }
+    ],  
+    "host_permissions": [
+      "https://genius.com/*"
+    ]
+  }
