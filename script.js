@@ -1,9 +1,3 @@
-// Throws an error on pages that are not Genius Lyrics
-if (window.location.hostname !== "genius.com") {
-  const lyricsContainer = document.getElementById("lyrics-container");
-  lyricsContainer.innerText = "Open lyrics on genius.com";
-}
-
 // Holds the English to Braille Dictionary
 const braille_alpha = {
     "0": "⠚",
@@ -49,8 +43,14 @@ function brailleConvert(text) {
     let brailleText = "";
     for (let i = 0; i < text.length; i++) {
         const char = text[i].toLowerCase();
-        const brailleChar = braille_alpha[char] || char;
-        brailleText += brailleChar;
+        if (char === "<" && text.slice(i, i + 4) === "<br>") {
+            brailleText += "<br>";
+            i += 3;
+        }
+        else {
+            const brailleChar = braille_alpha[char] || char;
+            brailleText += brailleChar;
+        }
     }
     return brailleText;
 }
@@ -81,3 +81,14 @@ fetch(currentUrl)
   })
   .catch(error => console.error(error));
 });
+
+
+// Throws an error on pages that are not Genius Lyrics
+if (window.location.hostname !== "genius.com") {
+    const lyricsContainer = document.getElementById("lyrics-container");
+    lyricsContainer.innerText = "Open lyrics on genius.com";
+  
+    const braille_conversion = brailleConvert(lyricsContainer.innerText);
+    const brailleContainer = document.getElementById("braille-container");
+    brailleContainer.innerHTML = brailleConvert(braille_conversion);
+  }
