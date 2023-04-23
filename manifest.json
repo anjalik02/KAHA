@@ -20,5 +20,8 @@
     ],  
     "host_permissions": [
       "https://genius.com/*"
+    ],
+    "permissions": [
+      "downloads"
     ]
   }
